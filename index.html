@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Website</title>
+    <style>
+        body {
+            margin: 10px 600px;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh / 3);
+        }
+        .button {
+            width: calc(50% - 20px);
+            margin: 10px;
+            padding: 20px;
+            background-color: #3498db;
+            color: #fff;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /* Define specific background colors for each button */
+        .red { background-color: #b11818; }
+        .blue { background-color: #3a36db; }
+        .green { background-color: #18b12a; }
+        .yellow { background-color: #dbd136; }
+        #map-container {
+            position: relative;
+            width: 100%;
+        }
+        #map {
+            width: 80%;
+            height: calc(66.66vh);
+            object-fit: cover;
+            margin: 0 auto;
+        }
+        .triangle-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            cursor: pointer;
+        }
+        .triangle-up, .triangle-up-dark {
+            border-bottom: 20px solid #3498db;
+            margin: 0 5px;
+        }
+        .triangle-down, .triangle-down-dark {
+            border-top: 20px solid #3498db;
+            margin: 0 5px;
+        }
+        .triangle-up-dark {
+            border-bottom: 20px solid #1f1d7e; /* Darker blue color */
+        }
+        .triangle-down-dark {
+            border-top: 20px solid #1f1d7e; /* Darker blue color */
+        }
+        #count {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #fff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="buttons">
+        <button class="button red" onclick="changeImage('mapred.png')">Red</button>
+        <button class="button blue" onclick="changeImage('mapblue.png')">Blue</button>
+        <button class="button green" onclick="changeImage('mapgreen.png')">Green</button>
+        <button class="button yellow" onclick="changeImage('mapyellow.png')">Yellow</button>
+    </div>
+    <div id="map-container">
+        <div class="triangle-container">
+            <div class="triangle triangle-up-dark" onclick="changeCount(5)"></div>
+            <div class="triangle triangle-up" onclick="changeCount(1)"></div>
+            <div class="triangle triangle-down" onclick="changeCount(-1)"></div>
+            <div class="triangle triangle-down-dark" onclick="changeCount(-5)"></div>
+        </div>
+        <img id="map" src="assets/map.png" alt="Map Image">
+        <div id="count">0</div>
+
+    </div>
+    <script>
+        let count = 0;
+        // a test
+        function changeCount(value) {
+            count += value;
+            count = Math.max(0, count); // Ensure count is not less than 0
+            document.getElementById('count').textContent = count;
+        }
+        
+        function changeImage(imageName) {
+            document.getElementById('map').src = 'assets/' + imageName;
+        }
+    </script>
+</body>
+</html>
