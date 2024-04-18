@@ -6,7 +6,7 @@
     <title>Mobile Website</title>
     <style>
         body {
-            margin: 10px 600px;
+            margin: 10px;
             padding: 0;
             font-family: Arial, sans-serif;
             text-align: center;
@@ -16,10 +16,10 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            height: calc(100vh / 3);
+            height: auto;
         }
         .button {
-            width: calc(50% - 20px);
+            width: 40%;
             margin: 10px;
             padding: 20px;
             background-color: #3498db;
@@ -39,36 +39,38 @@
             width: 100%;
         }
         #map {
-            width: 80%;
-            height: calc(66.66vh);
+            width: 70%;
+            height: auto;
+            max-height: calc(66.66vh);
             object-fit: cover;
             margin: 0 auto;
         }
         .triangle-container {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
         .triangle {
             width: 0;
             height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
             cursor: pointer;
         }
         .triangle-up, .triangle-up-dark {
-            border-bottom: 20px solid #3498db;
+            border-bottom: 15px solid #3498db;
             margin: 0 5px;
         }
         .triangle-down, .triangle-down-dark {
-            border-top: 20px solid #3498db;
+            border-top: 15px solid #3498db;
             margin: 0 5px;
         }
         .triangle-up-dark {
-            border-bottom: 20px solid #1f1d7e; /* Darker blue color */
+            border-bottom: 15px solid #1f1d7e; /* Darker blue color */
         }
         .triangle-down-dark {
-            border-top: 20px solid #1f1d7e; /* Darker blue color */
+            border-top: 15px solid #1f1d7e; /* Darker blue color */
         }
         #count {
             position: absolute;
@@ -97,11 +99,9 @@
         </div>
         <img id="map" src="assets/map.png" alt="Map Image">
         <div id="count">0</div>
-
     </div>
     <script>
         let count = 0;
-        // a test
         function changeCount(value) {
             count += value;
             count = Math.max(0, count); // Ensure count is not less than 0
